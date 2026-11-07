@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IDENTIDAD USM | Ropa Universitaria</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- LOGIN OVERLAY -->
+    <div id="loginOverlay">
+        <div class="login-box">
+            <div class="login-brand">IDENTIDAD <span>USM</span></div>
+            <p class="login-tagline">Ropa universitaria con identidad</p>
+            <p class="login-desc">Ingresa tus datos para acceder y obtener tu cupón de <strong>30% OFF</strong> en tu primera compra.</p>
+            <div class="input-group">
+                <label>Nombre</label>
+                <input type="text" id="loginNombre" placeholder="Ej. María">
+            </div>
+            <div class="input-group">
+                <label>Apellido</label>
+                <input type="text" id="loginApellido" placeholder="Ej. Pérez">
+            </div>
+            <div class="input-group">
+                <label>Facultad</label>
+                <select id="loginFacultad">
+                    <option value="">Selecciona tu facultad</option>
+                    <option value="FACES">FACES</option>
+                    <option value="DERECHO">DERECHO</option>
+                    <option value="INGENIERÍA Y ARQUITECTURA">INGENIERÍA Y ARQUITECTURA</option>
+                    <option value="ODONTOLOGÍA">ODONTOLOGÍA</option>
+                    <option value="FARMACIA">FARMACIA</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>Correo electrónico</label>
+                <input type="email" id="loginCorreo" placeholder="tucorreo@usm.edu">
+            </div>
+            <div class="login-error" id="loginError">Por favor completa todos los campos correctamente.</div>
+            <button onclick="registrarYEntrar()">Crear cuenta y entrar</button>
+            <div class="register-hint">
+                <i class="fas fa-gift"></i> Al registrarte obtienes <strong>30% OFF</strong> en tu primera compra
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <div id="mainContent" style="display:none;">
+
+        <!-- HEADER -->
+        <header class="site-header">
+            <div class="header-top">
+                <div class="header-announce">
+                    <span>Envío gratis en compras superiores a $50 · Cupón BIENVENIDA30 en tu primera compra</span>
+                </div>
+            </div>
+            <div class="header-main">
+                <nav class="header-nav-left">
+                    <a onclick="scrollToSection('coleccion-identidad')">Colección</a>
+                    <a onclick="scrollToSection('facultades')">Facultades</a>
+                    <a onclick="scrollToSection('historia')">Historia</a>
+                </nav>
+                <div class="header-logo">
+                    <h1>IDENTIDAD <span>USM</span></h1>
+                </div>
+                <nav class="header-nav-right">
+                    <a onclick="scrollToSection('contacto')">Contacto</a>
+                    <a class="admin-link" onclick="abrirAdmin()"><i class="fas fa-lock"></i> Admin</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-text">
+                <p class="hero-eyebrow">Nueva Colección 2026</p>
+                <h2 class="hero-title">Viste tu identidad<br><span>USM</span></h2>
+                <p class="hero-desc">Camisas y hoodies diseñados por y para estudiantes. Lleva el orgullo de tu facultad contigo.</p>
+                <button class="btn-primary" onclick="scrollToSection('coleccion-identidad')">Explorar colección</button>
+            </div>
+            <div class="hero-image">
+                <!-- AQUÍ SE COLOCÓ LA IMAGEN DEL SOMBRERO -->
+                <img src="img/hero-logo.png" alt="Identidad USM" class="hero-img-real">
+            </div>
+        </section>
+
+        <!-- TOP SELLERS -->
+        <section id="coleccion-identidad" class="top-sellers">
+            <div class="section-head">
+                <p class="section-eyebrow">TOP SELLERS</p>
+                <h2 class="section-title">Hand-Picked Top Sellers</h2>
+                <p class="section-sub">Lo más vendido de nuestro catálogo</p>
+            </div>
+            <div class="grid-productos" id="gridIdentidad"></div>
+        </section>
+
+        <!-- FACULTADES -->
+        <section id="facultades" class="facultades-section">
+            <div class="section-head">
+                <p class="section-eyebrow">COLECCIÓN</p>
+                <h2 class="section-title">Por Facultad</h2>
+                <p class="section-sub">Encuentra tu facultad y carrera</p>
+            </div>
+            <div class="facultades-container" id="facultadesContainer"></div>
+        </section>
+
+        <!-- HISTORIA -->
+        <section id="historia" class="historia-section">
+            <div class="historia-container">
+                <div class="historia-imagen">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="historia-texto">
+                    <p class="section-eyebrow">NUESTRA HISTORIA</p>
+                    <h2 class="section-title">Nacimos para vestir tu identidad</h2>
+                    <p><strong>IDENTIDAD USM</strong> nació en 2024 como un emprendimiento universitario con una idea simple pero poderosa: que cada estudiante pueda llevar consigo el orgullo de pertenecer a la USM.</p>
+                    <p>Comenzamos con una pequeña colección de camisas y hoodies diseñadas por y para estudiantes. Hoy, nuestra misión es vestir a la comunidad universitaria con prendas de calidad que representen la identidad de cada facultad y carrera.</p>
+                    <p>Cada diseño es pensado para que te sientas parte de algo más grande. Porque la universidad no es solo un lugar, es una identidad que llevas contigo.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEWSLETTER / CUPÓN -->
+        <section class="newsletter">
+            <div class="newsletter-inner">
+                <p class="section-eyebrow">CUPÓN DE BIENVENIDA</p>
+                <h2 class="section-title">30% OFF en tu primera compra</h2>
+                <p class="section-sub">Regístrate y obtén el cupón automáticamente</p>
+                <div class="newsletter-code">BIENVENIDA30</div>
+            </div>
+        </section>
+
+        <!-- CONTACTO -->
+        <section id="contacto" class="contacto-section">
+            <div class="contacto-container">
+                <div class="contacto-info">
+                    <p class="section-eyebrow">CONTACTO</p>
+                    <h2 class="section-title">Hablemos</h2>
+                    <p>¿Tienes dudas sobre tallas, pedidos o diseños personalizados? Escríbenos.</p>
+                    <div class="dato"><i class="fas fa-envelope"></i> hola@identidadusm.com</div>
+                    <div class="dato"><i class="fas fa-phone-alt"></i> +58 412 000 0000</div>
+                    <div class="dato"><i class="fas fa-map-marker-alt"></i> Universidad Santa María, Caracas</div>
+                    <div class="dato"><i class="fab fa-instagram"></i> @identidadusm</div>
+                </div>
+                <div class="contacto-form">
+                    <input type="text" placeholder="Tu nombre" id="contactoNombre">
+                    <input type="email" placeholder="Tu correo electrónico" id="contactoCorreo">
+                    <textarea placeholder="Escribe tu mensaje..." id="contactoMensaje"></textarea>
+                    <button class="btn-primary" onclick="enviarContacto()">Enviar mensaje</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <h3>IDENTIDAD <span>USM</span></h3>
+                    <p>Ropa universitaria con identidad.</p>
+                </div>
+                <div class="footer-links">
+                    <a onclick="scrollToSection('coleccion-identidad')">Colección</a>
+                    <a onclick="scrollToSection('facultades')">Facultades</a>
+                    <a onclick="scrollToSection('historia')">Historia</a>
+                    <a onclick="scrollToSection('contacto')">Contacto</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 IDENTIDAD USM. Todos los derechos reservados.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ADMIN PANEL -->
+    <div id="adminPanel">
+        <div class="admin-content">
+            <span class="close-admin" onclick="cerrarAdmin()">&times;</span>
+            <h2><i class="fas fa-chart-line"></i> Panel de Administración</h2>
+            <p class="admin-sub">Bienvenida, fundadora.</p>
+
+            <div class="admin-stats">
+                <div class="stat-card"><i class="fas fa-users"></i><div class="num" id="statVisitantes">0</div><div class="label">Visitantes</div></div>
+                <div class="stat-card"><i class="fas fa-mouse-pointer"></i><div class="num" id="statClicks">0</div><div class="label">Clicks</div></div>
+                <div class="stat-card"><i class="fas fa-shopping-bag"></i><div class="num" id="statVentas">0</div><div class="label">Ventas</div></div>
+                <div class="stat-card"><i class="fas fa-user-plus"></i><div class="num" id="statRegistros">0</div><div class="label">Registros</div></div>
+                <div class="stat-card"><i class="fas fa-dollar-sign"></i><div class="num" id="statIngresos">$0</div><div class="label">Ingresos</div></div>
+            </div>
+
+            <div class="admin-table-container">
+                <h3><i class="fas fa-fire"></i> Productos más clickeados</h3>
+                <table><thead><tr><th>Producto</th><th>Clicks</th></tr></thead><tbody id="tbodyFavoritos"></tbody></table>
+            </div>
+
+            <div class="admin-table-container">
+                <h3><i class="fas fa-file-excel"></i> Registro de usuarios</h3>
+                <table>
+                    <thead><tr><th>Nombre</th><th>Apellido</th><th>Facultad</th><th>Correo</th><th>Fecha</th></tr></thead>
+                    <tbody id="tbodyUsuarios"></tbody>
+                </table>
+                <button class="btn-excel" onclick="exportarExcel()"><i class="fas fa-download"></i> Exportar a Excel (CSV)</button>
+            </div>
+
+            <div class="grafico-ventas">
+                <h3><i class="fas fa-chart-bar"></i> Ventas mes a mes</h3>
+                <div class="barra-container" id="graficoVentas"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
